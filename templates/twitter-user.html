@@ -69,11 +69,19 @@
     {{error_txt}}
     </div>
     {% else %}
-      <div style="max-width: 350px;">
+   
+        
+        <table >
+        <tr><td><a href="/user/{{twitter_name}}"><img style="min-height: 48px;" src="{{user.profile_image_url}}" /></a></td>
+        <td><a href="/user/{{twitter_name}}"><h2 class="list-group-item-heading">{{twitter_name}}</h2>@{{screen_name}}</a> </td></tr>
+        </table>
+    
+   
+      <!--<div style="max-width: 350px;">
          <span style="float: left; "><img style=" max-height: 200px; max-width:160px;" src="{{user.profile_image_url}}" width="96" /></span>
          <span style="float: right;"><h2>{{twitter_name}}</h2>
          <h3>@{{screen_name}}</h3></span>
-     </div>
+     </div>-->
     
     <div>
      <div style="float: left; max-width: 600px;">
@@ -81,7 +89,7 @@
      <table>
      <th></th>
     {% for tweet in tweet_list %}
-    
+
     <tr><td>{{tweet.text}}</td><td>{{tweet.created_at}}</td></tr>
     
     {% endfor %}
