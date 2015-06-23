@@ -68,7 +68,7 @@
 
  
         <div class="row">          
-            <div class="col-md-8">
+            <div class="col-sm-4">
                <h3>Selected users likely to stop tweeting</h3>
                 <div class="list-group">
                 {% for user in users %}
@@ -79,8 +79,12 @@
                 {% endfor %}
                 </div>
             </div>
+            
+            <div class="col-sm-2">
+            &nbsp;
+            </div>
 
-            <div class=col-md-4">
+            <div class="col-sm-6">
                 <h4>Predict whether a Twitter user will stop tweeting in the next 3 months:</h4>
                 <div>
                     <form action="/user" method="GET">
@@ -88,28 +92,14 @@
                     <input name="screen_name" id="screen_name_box" />
                     </form>
                 </div>
-                <div style="margin-top:100px;">
-                <img src="../static/map_tweets_all.png" width="400px" />
+                <div style="margin-top:60px;">
+                    <img src="../static/map_tweets_all.png" width="400px" />
                 </div>
             </div>
 
 
         </div> <!-- end of row -->
-        <div id="right-side-panel" style="float: right; max-width:450px;">
-            
-            
-            <!--<div><h3>Time on service</h3>
-            <img src="../static/time_on_service_all.png" width="500px" />
-            </div>
-            
-            <div><h3>Followers</h3>
-            <img src="../static/followers_all.png" width="500px" />
-            </div>
-            
-            <div><h3>Friends count</h3>
-            <img src="../static/friends_all.png" width="500px" />
-            </div>-->
-        </div>
+
 
    </div><!-- /.container -->
 
