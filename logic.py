@@ -63,7 +63,7 @@ def vectorize_tweeter(screen_name_or_id, tweets, query_date=datetime.datetime.no
                      'friends_count' : user.friends_count,
                      'followers_count' : user.followers_count,
                      'name': user.name,
-                     'profile_image_url': user.profile_image_url.replace(u"_normal", u"bigger") }
+                     'profile_image_url': user.profile_image_url.replace(u"_normal", u"_bigger") }
         age = pd.Series(age).astype(np.int64).values[0]
         
         to_transform=np.array([features['followers_count'], 
