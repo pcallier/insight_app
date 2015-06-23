@@ -73,7 +73,7 @@
                 <div class="list-group">
                 {% for user in users %}
                     <div class="list-group-item">
-                        <table>
+                        <table >
                         <tr><td><a href="/user/{{user.screen_name}}"><img style="min-height: 48px;" src="{{user.profile_image_url}}" /></a></td>
                         <td><a href="/user/{{user.screen_name}}"><h4 class="list-group-item-heading">{{user.name}}</h4>@{{user.screen_name}}</a> </td></tr>
                         </table>
