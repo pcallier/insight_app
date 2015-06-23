@@ -66,24 +66,20 @@
  
 
  
-        <div id="left-side-panel" style="float: left; max-width:300px;">
-
-            
-            <div style="max-width: 275px;">
+        <div class="row">          
+            <div class="col-sm-4">
                <h3>Selected users likely to stop tweeting</h3>
+                <div class="list-group">
                 {% for user in users %}
-                    <div style="max-width: 250px; min-height: 75px;">
+                    <div class="list-group-item" style="min-height:96px;">
                         <span style="float: left;"><a href="/user/{{user.screen_name}}"><img src="{{user.profile_image_url}}" /></a></span>
-                        <span style="float: right; min-width:190px;"><a href="/user/{{user.screen_name}}"><b>{{user.name}}</b><br />@{{user.screen_name}}</a></span>
+                        <span style="float: right; min-width:190px;"><a href="/user/{{user.screen_name}}"><div class="list-group-item-heading">{{user.name}}</div>@{{user.screen_name}}</a></span>
                     </div>
                 {% endfor %}
-                
+                </div>
             </div>
 
-        </div>
-        <div id="right-side-panel" style="float: right; max-width:450px;">
-            
-            <div>
+            <div class=col-sm-4">
                 <h4>Predict whether a Twitter user will stop tweeting in the next 3 months:</h4>
                 <div>
                     <form action="/user" method="GET">
@@ -95,6 +91,12 @@
                 <img src="../static/map_tweets_all.png" width="400px" />
                 </div>
             </div>
+
+
+        </div> <!-- end of row -->
+        <div id="right-side-panel" style="float: right; max-width:450px;">
+            
+            
             <!--<div><h3>Time on service</h3>
             <img src="../static/time_on_service_all.png" width="500px" />
             </div>
