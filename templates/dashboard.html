@@ -72,7 +72,7 @@
                 <div class="list-group">
                 {% for user in users %}
                     <div class="list-group-item">
-                        <span><a href="/user/{{user.screen_name}}"><img src="{{user.profile_image_url}}" /></a></span>
+                        <span><a href="/user/{{user.screen_name}}"><img style="min-height: 48px;" src="{{user.profile_image_url}}" /></a></span>
                         <span style="float: right; min-width:190px;"><a href="/user/{{user.screen_name}}"><h4 class="list-group-item-heading">{{user.name}}</h4>@{{user.screen_name}}</a></span> 
                     </div>
                 {% endfor %}
