@@ -57,17 +57,18 @@
 <br><br>
 
 
-   <div class="container" style="max-width:950px;">
-        <div class="starter-template">
+
+           <div class="container">
+
+         <div class="starter-template">
             <h1>canary</h1>
             <p class="lead">The churn early warning system for Twitter</p>
 
         </div>
- 
 
  
         <div class="row">          
-            <div class="col-sm-4">
+            <div class="col-md-8">
                <h3>Selected users likely to stop tweeting</h3>
                 <div class="list-group">
                 {% for user in users %}
@@ -79,7 +80,7 @@
                 </div>
             </div>
 
-            <div class=col-sm-4">
+            <div class=col-md-4">
                 <h4>Predict whether a Twitter user will stop tweeting in the next 3 months:</h4>
                 <div>
                     <form action="/user" method="GET">
