@@ -75,7 +75,7 @@
     
     <div>
        <div class="col-sm-6"> 
-        <table >
+        <table>
         <tr><td><a href="/user/{{twitter_name}}"><img style="min-height: 48px;" src="{{user.profile_image_url}}" /></a></td>
         <td><a href="/user/{{twitter_name}}"><h2 class="list-group-item-heading">{{twitter_name}}</h2>@{{screen_name}}</a> </td></tr>
         </table>
@@ -83,8 +83,8 @@
     <div class="list-group">
     {% for tweet in tweet_list %}
     <div class="list-group-item">
-    <div>{{tweet.text}}</div>
-    <h5>{{tweet.created_at}}</h5>
+    <div style="font-size:bigger;">{{tweet.text}}</div>
+    <h4>{{tweet.created_at}}</h4>
     </div>
     {% endfor %}
      </div>
@@ -92,7 +92,7 @@
 
 
 
-    <div class="col-sm-6" style="float: right;">
+    <div class="col-sm-6">
         <div style="font-size:x-large;">
         {{twitter_name}} is 
         {% if not will_churn %} <b>not</b> likely {% else %}  <b>likely</b> {% endif %}  to leave the service in 3 mos.
