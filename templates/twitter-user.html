@@ -71,15 +71,14 @@
     {% else %}
    
         
+
+    
+    <div>
+       <div class="col-sm-6"> 
         <table >
         <tr><td><a href="/user/{{twitter_name}}"><img style="min-height: 48px;" src="{{user.profile_image_url}}" /></a></td>
         <td><a href="/user/{{twitter_name}}"><h2 class="list-group-item-heading">{{twitter_name}}</h2>@{{screen_name}}</a> </td></tr>
         </table>
-    
-    <div>
-       <div class="col-sm-4"> 
-     <h2>@{{screen_name}}'s Twitter feed</h2>
-  
  
     <div class="list-group">
     {% for tweet in tweet_list %}
@@ -93,7 +92,7 @@
 
 
 
-    <div style="float: right;">
+    <div class="col-sm-6" style="float: right;">
         <div style="font-size:x-large;">
         {{twitter_name}} is 
         {% if not will_churn %} <b>not</b> likely {% else %}  <b>likely</b> {% endif %}  to leave the service in 3 mos.
