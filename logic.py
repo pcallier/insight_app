@@ -41,16 +41,17 @@ def get_tweets_by_user(screen_name):
 
 def vectorize_tweeter(screen_name_or_id, tweets, query_date=datetime.datetime.now()):
     """Look up tweeter by screen name. Produce feature matrix from
-    their user information and timeline. Returns tuple of untransformed
-    features (in a dict) and transformed features (in a numpy array"""
+    their user information and timeline. Returns untransformed 
+    features in a pandas dataframe"""
     
     features = { 'age' : None, 'friends_count': None, 'followers_count': None,
     'name': None, 'profile_image_url': None }
+    features_df = None
     
     try:
         api = twapi.get_api()
         user_corpus = [tweet.text for tweet in tweets]
-        scaler = pickle.load(file("app/static/models/scaler.pickle","r"))
+        #scaler = pickle.load(file("app/static/models/scaler.pickle","r"))
         user = api.get_user(screen_name_or_id)
         now = pd.to_datetime(datetime.datetime.now())
         age = now - user.created_at
@@ -59,26 +60,29 @@ def vectorize_tweeter(screen_name_or_id, tweets, query_date=datetime.datetime.no
         elif age.days < 365:
             user_age = "%d months" % (age.days / 30)
         
-        features = { 'age' :  user_age,
-                     'friends_count' : user.friends_count,
-                     'followers_count' : user.followers_count,
-                     'name': user.name,
-                     'profile_image_url': user.profile_image_url.replace(u"_normal", u"_bigger") }
         age = pd.Series(age).astype(np.int64).values[0]
         
-        to_transform=np.array([features['followers_count'], 
-                                    features['friends_count'], 
-                                    age]).T
-        logging.debug(to_transform)
-        scaled_features = np.array(scaler.transform(to_transform))
+        features = { 'user_age_str' :  user_age,
+                     'user_age' : age,
+                     'friends_count' : user.friends_count,
+                     'followers_count' : user.followers_count,
+                     'friend_follow': np.log(float(user.followers_count)
+                        float(user.friends_count + 1)),
+                     'name': user.name,
+                     'profile_image_url': user.profile_image_url.replace(u"_normal", u"_bigger") }
+        
+        features_df=pd.DataFrame({ k: features[k] for k in ('followers_count',
+            'friends_count', 'user_age', 'friend_follow') })
+        
     except:
         logging.warning("Exception: ", exc_info=True)
     
     finally:
-        return (features, scaled_features)
+        return (features, features_df)
     
 def load_model(model_path=None):
     if model_path is None:
-        model_path="app/static/models/svm1434693300.pkl"
+        #model_path="app/static/models/svm1434693300.pkl"
+        model_path="app/static/models/logreg-------.pkl"
     model = pickle.load(file(model_path, "r"))
     return model
