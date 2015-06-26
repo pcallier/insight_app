@@ -9,12 +9,14 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 import psycopg2 as mdb
+import tweepy
+
 from logic import vectorize_tweeter, load_model, get_tweets_by_user, \
     get_random_users
 
 dbuser="ubuntu"
 db= mdb.connect(dbname="tweets", user=dbuser)
-svm = load_model()  
+the_model = load_model()  
     
 @app.route('/')
 @app.route('/index')
@@ -40,9 +42,11 @@ def twitter_user_view(screen_name=None):
     try:
         tweets = get_tweets_by_user(screen_name)
         logging.debug(screen_name)
-        features, scaled_features = vectorize_tweeter(screen_name, tweets)
-        will_churn=svm.predict(scaled_features)
+        feature_dict, feature_df = vectorize_tweeter(screen_name, tweets)
+        will_churn=the_model.predict(feature_df)
         error_txt = None
+    except tweepy.TweepError:
+        return render_template("user-not-found.html")
 
     except Exception as e:
         error_txt="Error"
@@ -53,7 +57,7 @@ def twitter_user_view(screen_name=None):
                            twitter_name=features['name'],
                            screen_name=screen_name,
                            tweet_list=tweets,
-                           user=features,
+                           user=feature_dict,
                            will_churn=will_churn,
                            error_txt=error_txt)
                            
