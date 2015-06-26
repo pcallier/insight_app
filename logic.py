@@ -12,7 +12,7 @@ import pandas as pd
 logging.basicConfig(level=logging.DEBUG)
 
 
-dbuser="limited_access"
+dbuser="ubuntu"
 
 def get_random_users(prediction=True, n=5):
     con = mdb.connect(dbname="tweets",user=dbuser)
