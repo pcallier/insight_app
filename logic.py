@@ -11,8 +11,8 @@ import logging
 import pandas as pd
 import sklearn
 import logscaler
+from logscaler import LogScaler
 logging.basicConfig(level=logging.DEBUG)
-
 
 dbuser="ubuntu"
 
