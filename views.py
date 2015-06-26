@@ -14,7 +14,7 @@ import tweepy
 from logic import vectorize_tweeter, load_model, get_tweets_by_user, \
     get_random_users
 
-dbuser="ubuntu"
+dbuser="limited_access"
 db= mdb.connect(dbname="tweets", user=dbuser)
 the_model = load_model()  
     

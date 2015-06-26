@@ -12,7 +12,7 @@ import pandas as pd
 logging.basicConfig(level=logging.DEBUG)
 
 
-dbuser="ubuntu"
+dbuser="limited_access"
 
 def get_random_users(prediction=True, n=5):
     con = mdb.connect(dbname="tweets",user=dbuser)
@@ -83,6 +83,6 @@ def vectorize_tweeter(screen_name_or_id, tweets, query_date=datetime.datetime.no
 def load_model(model_path=None):
     if model_path is None:
         #model_path="app/static/models/svm1434693300.pkl"
-        model_path="app/static/models/logreg-------.pkl"
+        model_path="app/static/models/logreg_1435302860.pkl"
     model = pickle.load(file(model_path, "r"))
     return model
