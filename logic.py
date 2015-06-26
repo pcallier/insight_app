@@ -10,7 +10,9 @@ import psycopg2 as mdb
 import logging
 import pandas as pd
 import sklearn
+import logscaler
 logging.basicConfig(level=logging.DEBUG)
+
 
 dbuser="ubuntu"
 
