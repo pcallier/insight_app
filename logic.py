@@ -67,7 +67,7 @@ def vectorize_tweeter(screen_name_or_id, tweets, query_date=datetime.datetime.no
                      'friends_count' : user.friends_count,
                      'followers_count' : user.followers_count,
                      'friend_follow': np.log(float(user.followers_count)
-                        float(user.friends_count + 1)),
+                        float(user.friends_count + 1),
                      'name': user.name,
                      'profile_image_url': user.profile_image_url.replace(u"_normal", u"_bigger") }
         
