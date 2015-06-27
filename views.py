@@ -50,10 +50,13 @@ def twitter_user_view(screen_name=None):
         return render_template("user-not-found.html")
     except Exception as e:
         error_txt="Error"
+        will_churn=None
+        tweets=None
+        feature_dict=None
         logging.debug("Error: ", exc_info=True)
         
     return render_template('twitter-user.html',
-                           twitter_name=feature_dict['name'],
+                           twitter_name=feature_dict.get('name',None),
                            screen_name=screen_name,
                            tweet_list=tweets,
                            user=feature_dict,
