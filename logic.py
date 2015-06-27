@@ -6,6 +6,7 @@ import pickle
 import numpy as np
 import tokenization as tknz
 import datetime
+from collections import OrderedDict
 import psycopg2 as mdb
 import logging
 import pandas as pd
@@ -56,7 +57,9 @@ def vectorize_tweeter(screen_name_or_id, tweets, query_date=datetime.datetime.no
         #scaler = pickle.load(file("app/static/models/scaler.pickle","r"))
         user = api.get_user(screen_name_or_id)
         now = pd.to_datetime(datetime.datetime.now())
-        age = now - user.created_at
+        logging.debug("Original created at: {}".format(user.created_at))
+        logging.debug("Converted created at: {}".format(pd.to_datetime(user.created_at)))
+        age = now - pd.to_datetime(user.created_at)
         if age.days > 365:
             user_age = "%0.1f years" % (float(age.days) / 365.)
         elif age.days < 365:
@@ -72,9 +75,9 @@ def vectorize_tweeter(screen_name_or_id, tweets, query_date=datetime.datetime.no
                         float(user.friends_count + 1) + 0.001),
                      'name': user.name,
                      'profile_image_url': user.profile_image_url.replace(u"_normal", u"_bigger") }
-        
-        features_df=pd.DataFrame({ k: [features[k]] for k in ('followers_count',
-            'friends_count', 'user_age', 'friend_follow') })
+        colnames=('followers_count', 'friends_count', 
+                    'user_age', 'friend_follow')
+        features_df=pd.DataFrame(OrderedDict([ (k, [features[k]]) for k in colnames ]))
         logging.debug(features_df)
         
     except:
