@@ -8,7 +8,7 @@
    <meta name="author" content="">
    <link rel="icon" href="../../favicon.ico">
 
-   <title>User view - Canary churn alert</title>
+   <title>User view - Canary inactivity alert</title>
 
    <!-- Bootstrap core CSS -->
    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -95,11 +95,11 @@
     <div class="col-sm-6">
         <div style="font-size:x-large;">
         {{twitter_name}} is 
-        {% if not will_churn %} <b>not</b> likely {% else %}  <b>likely</b> {% endif %}  to leave the service in 3 mos.
+        {% if not will_churn %} <b>not</b> likely {% else %}  <b>likely</b> {% endif %}  to stop tweeting in 3 mos.
         </div>
         <div style="font-size:large;">
-        {%if churn_prob %}
-        ({{churn_prob}})
+        {%if churn_prob is defined %}
+        (Estimated {{churn_prob}}% likely to become inactive)
         {% endif %}
         </div>
 
