@@ -44,7 +44,8 @@ def twitter_user_view(screen_name=None):
         tweets = get_tweets_by_user(screen_name)
         logging.debug(screen_name)
         feature_dict, feature_df = vectorize_tweeter(screen_name, tweets)
-        will_churn=the_model.predict(feature_df)
+        churn_prob=the_model.predict_proba(feature_df)
+        will_churn=churn_prob > 0.5
         error_txt = None
     except tweepy.TweepError:
         return render_template("user-not-found.html")
@@ -61,6 +62,7 @@ def twitter_user_view(screen_name=None):
                            tweet_list=tweets,
                            user=feature_dict,
                            will_churn=will_churn,
+                           churn_prob=churn_prob,
                            error_txt=error_txt)
 
 

@@ -97,6 +97,11 @@
         {{twitter_name}} is 
         {% if not will_churn %} <b>not</b> likely {% else %}  <b>likely</b> {% endif %}  to leave the service in 3 mos.
         </div>
+        <div style="font-size:large;">
+        {%if churn_prob %}
+        ({{churn_prob}})
+        {% endif %}
+        </div>
 
         <div >
             <table>
