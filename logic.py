@@ -75,6 +75,7 @@ def vectorize_tweeter(screen_name_or_id, tweets, query_date=datetime.datetime.no
         
         features_df=pd.DataFrame({ k: features[k] for k in ('followers_count',
             'friends_count', 'user_age', 'friend_follow') })
+        logging.debug(features_df)
         
     except:
         logging.warning("Exception: ", exc_info=True)
