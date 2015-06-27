@@ -65,7 +65,7 @@ def twitter_user_view(screen_name=None):
                            tweet_list=tweets,
                            user=feature_dict,
                            will_churn=will_churn,
-                           churn_prob=churn_prob,
+                           churn_prob=int(churn_prob*100),
                            error_txt=error_txt)
 
 
