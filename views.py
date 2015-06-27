@@ -49,7 +49,7 @@ def twitter_user_view(screen_name=None):
     except tweepy.TweepError:
         return render_template("user-not-found.html")
     except Exception as e:
-        error_txt="Error"
+        error_txt="Error: \n" + e.message
         will_churn=None
         tweets=None
         feature_dict={}
