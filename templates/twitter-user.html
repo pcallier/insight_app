@@ -76,14 +76,14 @@
     <div>
        <div class="col-sm-6"> 
         <table>
-        <tr><td><a href="/user/{{screen_name}}"><img style="min-height: 48px;" src="{{user.profile_image_url}}" /></a></td>
-        <td><a href="/user/{{screen_name}}"><h2 class="list-group-item-heading">{{twitter_name}}</h2>@{{screen_name}}</a> </td></tr>
+        <tr><td><a href="https://twitter.com/{{screen_name}}"><img style="min-height: 48px;" src="{{user.profile_image_url}}" /></a></td>
+        <td><a href="https://twitter.com/{{screen_name}}"><h2 class="list-group-item-heading">{{twitter_name}}</h2>@{{screen_name}}</a> </td></tr>
         </table>
  
     <div class="list-group">
     {% for tweet in tweet_list %}
     <div class="list-group-item">
-    <div style="font-size:large;">{{tweet.text|safe|urlize}}</div>
+    <div style="font-size:large;">{{tweet.text|safe|urlize|twitterate}}</div>
     <h6>{{tweet.created_at}}</h6>
     </div>
     {% endfor %}

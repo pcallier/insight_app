@@ -3,6 +3,7 @@
 
 import sys
 import os
+import re
 from flask import render_template , request, url_for, redirect
 from app import app
 import logging
@@ -58,4 +59,10 @@ def twitter_user_view(screen_name=None):
                            user=feature_dict,
                            will_churn=will_churn,
                            error_txt=error_txt)
-                           
+
+
+@app.template_filter('twitterate')
+def make_twitter_links(value):
+    """jinja2 filter. find @xxx in value, replace with in-app link"""
+    at_pattern = r"""@(\[A-Za-z0-9_]+)"""
+    re.sub(at_pattern, """<a href="/user/\1">@\1</a>""", value)
