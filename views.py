@@ -64,7 +64,7 @@ def twitter_user_view(screen_name=None):
 @app.template_filter('twitterate')
 def make_twitter_links(value):
     """jinja2 filter. find @xxx in value, replace with in-app link"""
-    at_pattern = r"""@(\[A-Za-z0-9_]+)"""
+    at_pattern = r"""@([A-Za-z0-9_]+)"""
     new_value = re.sub(at_pattern, """<a href="/user/\1">@\1</a>""", value)
     logging.debug(new_value)
     return new_value
