@@ -98,7 +98,7 @@
         {% if not will_churn %} <b>not</b> likely {% else %}  <b>likely</b> {% endif %}  to stop tweeting in 3 mos.
         </div>
         <div style="font-size:large;">
-        {%if churn_prob is defined %}
+        {% if churn_prob is defined %}
         (Estimated {{churn_prob}}% likely to become inactive)
         {% endif %}
         </div>
