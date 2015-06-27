@@ -44,7 +44,7 @@ def twitter_user_view(screen_name=None):
         tweets = get_tweets_by_user(screen_name)
         logging.debug(screen_name)
         feature_dict, feature_df = vectorize_tweeter(screen_name, tweets)
-        churn_prob=the_model.predict_proba(feature_df)[1]
+        churn_prob=the_model.predict_proba(feature_df)[0][1]
         will_churn=churn_prob > 0.5
         logging.debug(churn_prob)
         logging.debug(will_churn)
