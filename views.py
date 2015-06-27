@@ -54,7 +54,7 @@ def twitter_user_view(screen_name=None):
         raise
         
     return render_template('twitter-user.html',
-                           twitter_name=features['name'],
+                           twitter_name=feature_dict['name'],
                            screen_name=screen_name,
                            tweet_list=tweets,
                            user=feature_dict,
