@@ -47,11 +47,9 @@ def twitter_user_view(screen_name=None):
         error_txt = None
     except tweepy.TweepError:
         return render_template("user-not-found.html")
-
     except Exception as e:
         error_txt="Error"
         logging.debug("Error: ", exc_info=True)
-        raise
         
     return render_template('twitter-user.html',
                            twitter_name=feature_dict['name'],
