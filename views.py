@@ -26,7 +26,7 @@ def index():
 
 @app.route("/app/")
 def app_dashboard():
-    random_users = get_random_users()
+    random_users = get_random_users(threshold=0.7)
     return render_template('dashboard.html', users=random_users)
 
 @app.route("/user", methods=["GET"])
