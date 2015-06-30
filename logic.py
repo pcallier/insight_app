@@ -21,7 +21,7 @@ def get_random_users(n=5, prediction = True):
     con = mdb.connect(dbname="tweets",user=dbuser)
     with con.cursor() as cur:
         cur.execute(u"SELECT name, screen_name, profile_pic_url, "
-        "prediction, churn_prob FROM users WHERE prediction IS NOT NULL AND name "
+        "prediction FROM users WHERE prediction IS NOT NULL AND name "
         "IS NOT NULL AND screen_name IS NOT NULL "
         "AND profile_pic_url IS NOT NULL")
         data = np.array(cur.fetchall())
