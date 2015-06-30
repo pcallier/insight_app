@@ -26,7 +26,8 @@ def get_random_users(n=5, prediction = True):
         "AND profile_pic_url IS NOT NULL")
         data = np.array(cur.fetchall())
         print data.shape
-        #print data[[0,1,2],3]
+        print data[[0,1,2],3]
+        
         data = data[data[:,3] == prediction, :]
         indices = np.random.random_integers(0, data.shape[0], n)
         return [ { 'name': r[0].decode('utf-8') ,'screen_name': r[1].decode('utf-8'), 'profile_image_url': r[2] } for r in data[indices] if r is not None ]
