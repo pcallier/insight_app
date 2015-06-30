@@ -34,7 +34,7 @@ def get_random_users(n=5, threshold = 0.5):
         print data[indices,:].shape
         return [ { 'name': r[0].decode('utf-8') ,'screen_name': r[1].decode('utf-8'), 'profile_image_url': r[2] } for r in data[indices] if r is not None ]
 
-def get_random_users_reprocess(prediction==True, n=5):
+def get_random_users_reprocess(prediction=True, n=5):
     pass
 
 def get_tweets_by_user(screen_name):
